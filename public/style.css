@@ -1,0 +1,35 @@
+body {
+    font-family: sans-serif;
+    padding: 20px;
+}
+
+.badge {
+
+    border-radius: 4px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.status-zerado {
+    background-color: green;
+}
+
+.status-jogando {
+    background-color: blue; 
+}
+
+.status-quero {
+    background-color: orangered; 
+}
+.sem-nota{
+     background-color: rgb(107, 91, 91); 
+}
+.nota-ruim{
+    background-color:red;
+}
+.nota-media{
+    background-color:orange
+}  
+.nota-boa{
+    background-color:green
+}

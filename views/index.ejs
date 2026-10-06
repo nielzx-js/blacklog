@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu blacklog.</title>
+    <style>
+        body{
+            background-color:aliceblue
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/header') %>
+
+    <h2> Meus jogos</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>Título</td>
+                <td>Plataforma</td>
+                <td>Status</td>
+                <td>Nota</td>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(jogos.length===0){ %>
+                <p style="color:red">Nenhum jogo cadastrado.</p>
+            <%} else{ %>
+                  <% jogos.forEach(jogo=>{ %>
+            <tr>
+            <td><%=jogo.titulo %></td>
+            <td><%=jogo.plataforma%></td>
+            <td>
+              <% if(jogo.status==="jogado"){ %>
+                <span class="badge status-zerado"><%= jogo.status %></span>
+             <% } else if(jogo.status==="jogando"){ %>
+                    <span class="badge status-jogando"><%= jogo.status %></span>
+               <% }else { %>
+               <span class="badge status-quero"><%= jogo.status %></span>
+           <% } %>
+            </td>
+
+            <% if (jogo.nota===null){ %>
+                <td class="badge sem-nota">Sem nota.</td>
+            <% }  else if(jogo.nota>=0 && jogo.nota <=5){ %>
+                <td class="nota-ruim"><%=jogo.nota %>/10</td>
+                <% } else if(jogo.nota>5 && jogo.nota<=7 ){ %>
+                <td class="nota-media"><%=jogo.nota %>/10</td>
+              <%  } else{ %>
+                 <td class="nota-boa"><%=jogo.nota %>/10</td>
+             <% } %>
+
+              </tr>
+         <%  }) %>
+           <% } %>
+          
+        </tbody>
+    </table>
+ <%- include('partials/footer') %>
+
+</body>
+</html>
