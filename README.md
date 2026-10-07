@@ -11,3 +11,5 @@ Projeto pessoal para praticar programação com um catálogo de jogos.
 ## Publicar na Vercel
 
 O projeto inclui `vercel.json`. Configure `DATABASE_URL` nas variáveis de ambiente do projeto na Vercel antes de publicar. Não envie o arquivo `.env` ao repositório.
+## Utilização de IA
+o projeto teve uma baixa utilização de IA, onde o único uso foi para adicionar os estilos na página.
