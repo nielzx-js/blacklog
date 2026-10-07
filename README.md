@@ -1,3 +1,13 @@
 # Blacklog
-<p>Projeto pessoal com o intuito de fortalecer minha base na programação colcando em prática novos conceitos.</p>
-<p> o site será um catalogo pessoal de jogos de cada usuário, cada usuário pode criar conta, fazer login, trocar credenciais dentre outras ações que a aplicação irá permitir. O usuário poderá: Criar conta, verificar, adicionar jogos, editar as credenciais e jogos, remover jogos e das notas a eles. Tudo isso disponibilizado gratuitamente na internet.</p>
+
+Projeto pessoal para praticar programação com um catálogo de jogos.
+
+## Rodar localmente
+
+1. Instale as dependências com `npm install`.
+2. Copie `.env.example` para `.env` e informe a URL do PostgreSQL em `DATABASE_URL`.
+3. Inicie o servidor com `npm start`.
+
+## Publicar na Vercel
+
+O projeto inclui `vercel.json`. Configure `DATABASE_URL` nas variáveis de ambiente do projeto na Vercel antes de publicar. Não envie o arquivo `.env` ao repositório.

@@ -1,32 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <link rel="stylesheet" href="/style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu blacklog.</title>
-    <style>
-        body{
-            background-color:aliceblue
-        }
-    </style>
 </head>
 <body>
     <%- include('partials/header') %>
 
+    <h2>Adicionar novo jogo</h2>
+    <form class="game-form" action="/jogos" method="POST">
+        <input type="text" name="titulo" placeholder="titulo" required>
+        <input type="text" name="plataforma" placeholder="plataforma" required>
+        <select name="status">
+            <option value="Quero jogar">Quero Jogar</option>
+            <option value="Jogando">Jogando</option>
+            <option value="Zerado">Zerado</option>
+        </select>
+        <input type="number" step="0.1" name="nota" placeholder="Nota" min="0" max="10" >
+        <button type="submit">Cadastrar</button>
+    </form>
+
+
+
+
     <h2> Meus jogos</h2>
-    <table border="1">
+    <div class="table-wrap">
+    <table>
         <thead>
             <tr>
-                <td>Título</td>
-                <td>Plataforma</td>
-                <td>Status</td>
-                <td>Nota</td>
+                <th>Título</th>
+                <th>Plataforma</th>
+                <th>Status</th>
+                <th>Nota</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
             <% if(jogos.length===0){ %>
-                <p style="color:red">Nenhum jogo cadastrado.</p>
+                <tr><td class="empty-state" colspan="5">Nenhum jogo cadastrado.</td></tr>
             <%} else{ %>
                   <% jogos.forEach(jogo=>{ %>
             <tr>
@@ -43,7 +56,7 @@
             </td>
 
             <% if (jogo.nota===null){ %>
-                <td class="badge sem-nota">Sem nota.</td>
+                <td><span class="badge sem-nota">Sem nota</span></td>
             <% }  else if(jogo.nota>=0 && jogo.nota <=5){ %>
                 <td class="nota-ruim"><%=jogo.nota %>/10</td>
                 <% } else if(jogo.nota>5 && jogo.nota<=7 ){ %>
@@ -51,13 +64,20 @@
               <%  } else{ %>
                  <td class="nota-boa"><%=jogo.nota %>/10</td>
              <% } %>
-
+            <td class="actions">
+                <a class="btn btn-editar" href="/jogos/editar/<%= jogo.id %>">Editar</a>
+                <form class="inline-form" action="/jogo/deletar/<%= jogo.id %>" method="POST">
+                    <button class="btn btn-deletar" type="submit" onclick="return confirm('Excluir este jogo?')">Deletar</button>
+                </form>
+            </td>
               </tr>
          <%  }) %>
            <% } %>
           
         </tbody>
     </table>
+    </div>
+
  <%- include('partials/footer') %>
 
 </body>
