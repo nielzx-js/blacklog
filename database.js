@@ -1,5 +1,7 @@
 const { Sequelize } = require('sequelize');
+const pg = require('pg');
 require('dotenv').config();
+
 const databaseUrl = process.env.DATABASE_URL;
 
 if (!databaseUrl) {
@@ -8,6 +10,7 @@ if (!databaseUrl) {
 
 const sequelize = new Sequelize(databaseUrl, {
     dialect: 'postgres',
+    dialectModule: pg,
     dialectOptions: {
         ssl: {
             require: true,
@@ -17,4 +20,4 @@ const sequelize = new Sequelize(databaseUrl, {
     logging: false
 });
 
-module.exports=sequelize
+module.exports = sequelize;
